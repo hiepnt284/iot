@@ -1,0 +1,70 @@
+.sensor-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80vh;
+}
+
+.select-container,
+.datepicker-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+#sensorData {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#sensorData th,
+#sensorData td {
+    border: 1px solid #676767;
+    padding: 8px;
+    text-align: left;
+}
+
+#sensorData th {
+    background-color: #f2f2f2;
+}
+
+#sensorData tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#sensorData tbody tr:hover {
+    background-color: #ddd;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.pagination a {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination li {
+    margin: 0 2px;
+    padding: 5px 0;
+
+}
+
+.pagination .active {
+    background-color: #4caf50;
+    color: white;
+}
+
+.pagination li:hover:not(.active) {
+    background-color: #ddd;
+}
