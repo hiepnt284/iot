@@ -20,7 +20,8 @@ public class DataSensor {
     private double temperature;
     private double humidity;
     private double light;
-    @JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
+    private double wind;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime time;
 
 

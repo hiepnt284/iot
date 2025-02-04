@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 public class ErrorResponse {
     private List<String> message;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime timeStamp;
 
     public ErrorResponse(List<String> message) {

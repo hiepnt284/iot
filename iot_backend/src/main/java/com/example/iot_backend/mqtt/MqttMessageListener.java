@@ -33,12 +33,14 @@ public class MqttMessageListener implements IMqttMessageListener {
 
     @Override
     public void messageArrived(String topic, MqttMessage message) throws Exception {
-        System.out.println("Received message from topic " + topic + ": " + new String(message.getPayload()));
+
         if(topic.equals(Mqttconst.DATA_TOPIC)){
             DataSensor dataSensor = objectMapper.readValue(message.toString(), DataSensor.class);
             LocalDateTime time = LocalDateTime.now();
             dataSensor.setTime(time);
+            System.out.println(dataSensor);
             dataSensorRepo.save(dataSensor);
+            webSocketService.sendMessageToClient(WebsocketConst.SENSOR_TOPIC, gson.toJson(dataSensor));
         }
         if(topic.equals(Mqttconst.ACTION_TOPIC)){
             Action action = objectMapper.readValue(message.toString(), Action.class);

@@ -1,9 +1,7 @@
 package com.example.iot_backend.controller;
 
-import com.example.iot_backend.dto.ActionDto;
 import com.example.iot_backend.dtoResponse.ActionResponse;
 import com.example.iot_backend.entity.Action;
-import com.example.iot_backend.exception.NoDataException;
 import com.example.iot_backend.service.ActionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -38,12 +36,13 @@ public class ActionController {
             @RequestParam(required = false, defaultValue = "5") int pageSize,
             @RequestParam(required = false, defaultValue = "id") String sortBy,
             @RequestParam(required = false, defaultValue = "DESC") String sortDir,
-            @RequestParam(name = "startDate", required = false) @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") LocalDateTime startDate,
-            @RequestParam(name = "endDate", required = false) @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")  LocalDateTime endDate){
-        ActionResponse actionResponse = actionService.getAllAction(pageNo,pageSize,startDate,endDate,sortBy,sortDir);
-        if (actionResponse == null || actionResponse.getContent().isEmpty()) {
-            throw new NoDataException();
-        }
+            @RequestParam(name = "startDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime startDate,
+            @RequestParam(name = "endDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  LocalDateTime endDate,
+            @RequestParam(required = false, defaultValue = "all") String device,
+            @RequestParam(required = false,defaultValue = "all") String state
+    ){
+        ActionResponse actionResponse = actionService.getAllAction(pageNo,pageSize,startDate,endDate,sortBy,sortDir, device, state);
+
 
         return new ResponseEntity<>(actionResponse, HttpStatus.OK);
     }

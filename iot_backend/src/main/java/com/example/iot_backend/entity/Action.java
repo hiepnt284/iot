@@ -24,7 +24,7 @@ public class Action {
     @Enumerated(EnumType.STRING)
     private ActionEnum action;
 
-    @JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime time;
 
 
